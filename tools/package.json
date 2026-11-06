@@ -1,0 +1,10 @@
+{
+  "name": "backend-from-first-principles-pdf-tools",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Diagram measurement for the printable Backend from First Principles editions",
+  "dependencies": {
+    "playwright-core": "1.65.0"
+  }
+}

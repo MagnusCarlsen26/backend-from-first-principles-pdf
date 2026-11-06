@@ -1,0 +1,14 @@
+# Generated books are distributed through GitHub Releases.
+/editions/
+/previous-edition/
+/build/
+
+# Local environments and generated files.
+/.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+!.env.example
