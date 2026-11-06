@@ -14,7 +14,7 @@ lines=['# Backend from First Principles — print editions','',
  '## Printing','',
  '- Select A4 paper, 100% / Actual size, and automatic orientation.',
  '- For two-sided printing, use long-edge binding. Preview the mixed portrait/landscape pages in your print dialog.',
- '- Use colour for the diagrams and syntax highlighting; backgrounds are mostly white.',
+ '- Text, tables and code listings use black ink. Colour is retained in the original diagrams.',
  '- Print one edition. The Go and Python books contain the same teaching text.',
  '- Each language edition has all 27 chapters, 243 vector diagrams, 126 tables, 313 code blocks, and 434 bookmarks.',
  '- Where the source offers language tabs, each edition selects that language, including language-specific Dockerfiles and deployment configuration. SQL and shared examples remain. Standalone examples explaining another runtime remain labelled with their source language.',
@@ -24,6 +24,17 @@ for lang,name in [('go','Go'),('python','Python')]:
     r=report[lang]
     assert not r['missing_internal_targets'] and not r['margin_overflow']
     original=OUT/r['file']; doc=fitz.open(original)
+    # Retain a word space in the outline even for exports whose section number
+    # was separated from its heading by a typographic margin rather than text.
+    toc=doc.get_toc(); chapter=section_number=0; changed=False
+    for entry in toc:
+        if entry[0]==1: chapter+=1; section_number=0
+        elif entry[0]==2:
+            section_number+=1; prefix=f'{chapter}.{section_number}'
+            if entry[1].startswith(prefix) and not entry[1][len(prefix):].startswith(' '):
+                entry[1]=prefix+' '+entry[1][len(prefix):].lstrip(); changed=True
+    if changed:
+        doc.set_toc(toc,collapse=1); doc.saveIncr(); doc.close(); doc=fitz.open(original)
     folder=OUT/f'{name}-printing-parts'; folder.mkdir(exist_ok=True)
     chapters=r['chapters']; starts={c['chapter']:c['page'] for c in chapters}
     lines.extend([f'### {name} edition — {len(doc)} pages', '',f'Full book: `{original.name}`','', '| Part | Chapters | Printed pages | PDF pages |','| --- | --- | --- | --- |'])

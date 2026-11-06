@@ -1,0 +1,4 @@
+b45e592a99560fc21ab9ea855a04e3caaeb69335c9d8ccc5ac0cde41fc77f4d5  Backend-from-First-Principles-Go-A4.pdf
+77942c6bfd266ba017fd854857f3ab64d2080402d498b4d05204ece9aa3451b0  Backend-from-First-Principles-Python-A4.pdf
+d676384a89c5ad16c3b4cec8da9306e595182c7ddeb4723a357e5ac12b89d403  Go-Print-in-Parts.zip
+b71ed9cf92443ebfd228d6d47b57914ffb0cb9414d41e12c4f7df136d6b97965  Python-Print-in-Parts.zip

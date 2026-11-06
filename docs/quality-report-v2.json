@@ -1,0 +1,366 @@
+{
+  "go": {
+    "file": "Backend-from-First-Principles-Go-A4.pdf",
+    "pages": 630,
+    "size_bytes": 3599916,
+    "chapters": [
+      {
+        "chapter": 1,
+        "title": "HTTP & CORS",
+        "page": 5,
+        "prose_sha256": "95a8b3578b04102792690b6934874d2c1414fb8d16291698b6f5c87215072f79"
+      },
+      {
+        "chapter": 2,
+        "title": "Routing, the where of every request.",
+        "page": 51,
+        "prose_sha256": "e797ed3d5db14935f93cdcde518d8406b876756c226922d327308ae88ab877e9"
+      },
+      {
+        "chapter": 3,
+        "title": "Serialization, the shared language of machines.",
+        "page": 64,
+        "prose_sha256": "9c29af7b74faf66972a9e55519c648c21a53e8be080070b0f44c74bb3569ffe7"
+      },
+      {
+        "chapter": 4,
+        "title": "Authentication, the question of who you are.",
+        "page": 77,
+        "prose_sha256": "8c660c8555fa840bac0376b2b0ec4c75c1f8a6b484fde4de250f14ad13e23fbc"
+      },
+      {
+        "chapter": 5,
+        "title": "Validations & Transformations.",
+        "page": 105,
+        "prose_sha256": "e0ba410ca7f516442032889f3683ad3afb7c029e8d37e4fc087398d87be7df17"
+      },
+      {
+        "chapter": 6,
+        "title": "Handlers, Services & Repositories.",
+        "page": 131,
+        "prose_sha256": "a86c0d876da33486e2fc12f38955b2bac7e9fb04f427db2f5c8369b5378fad84"
+      },
+      {
+        "chapter": 7,
+        "title": "API Design (REST)",
+        "page": 144,
+        "prose_sha256": "adb315012d199fa53aea71b1c912bc54a661a84d5e3194a41bae026239e5bba4"
+      },
+      {
+        "chapter": 8,
+        "title": "Databases",
+        "page": 178,
+        "prose_sha256": "5076da3fb443d6b3a752ccb1a816f77b57e1b4af514ea7d1f644519fa5e831a4"
+      },
+      {
+        "chapter": 9,
+        "title": "Caching",
+        "page": 200,
+        "prose_sha256": "65e6aa0aa2d3989b6b7ad837e21fb9cee0a0bf6cee51a85ea3e95a87cfcffb10"
+      },
+      {
+        "chapter": 10,
+        "title": "Task Queues & Background Jobs",
+        "page": 225,
+        "prose_sha256": "087491a372e74aa0864920a3625bb91dffe5fc53e930a8370d8449c56e13d483"
+      },
+      {
+        "chapter": 11,
+        "title": "Full-Text Search & Elasticsearch",
+        "page": 256,
+        "prose_sha256": "3f3eadd681266d6359838de1d9396530dd6919fd1b1bc776d576b6a4c2f8f7f3"
+      },
+      {
+        "chapter": 12,
+        "title": "Error Handling & Fault-Tolerant Systems",
+        "page": 271,
+        "prose_sha256": "5bb01d3057965a7ff51ee1dd0f46a9f7608b1805709152935461193ff6e4c21b"
+      },
+      {
+        "chapter": 13,
+        "title": "gRPC & Inter-Service Communication",
+        "page": 287,
+        "prose_sha256": "12544bb638037299450cc865c8b99c7f42b9892a09a7993821d6e1a83583db64"
+      },
+      {
+        "chapter": 14,
+        "title": "Configuration Management",
+        "page": 310,
+        "prose_sha256": "607f1b9c4afe4092e26b467fc247f90e6a3ba4f93be8133fa145cfa46e66630f"
+      },
+      {
+        "chapter": 15,
+        "title": "Logging & Observability",
+        "page": 325,
+        "prose_sha256": "58ee59869724baf321231200474de83915a7df563ba2bc2ef451d7b9fe7c8a95"
+      },
+      {
+        "chapter": 16,
+        "title": "Graceful Shutdown",
+        "page": 347,
+        "prose_sha256": "c6534f1aa38f665d760f0491043acdea5995fd69263d322341a87996188fd02a"
+      },
+      {
+        "chapter": 17,
+        "title": "Backend Security",
+        "page": 360,
+        "prose_sha256": "cb8551ec9ca12d3b16664e34e183af4f99e7780dd54b38ffeee3a480bc3a8026"
+      },
+      {
+        "chapter": 18,
+        "title": "Mastering Scaling & Performance",
+        "page": 387,
+        "prose_sha256": "cc8fd4073a3c5b96ce554f3796b06be7249873b57a1b0ecd4985a52190350546"
+      },
+      {
+        "chapter": 19,
+        "title": "Infrastructure, Architecture & Beyond",
+        "page": 408,
+        "prose_sha256": "6739023ed9c7d8e5584536a857188f0a9c8ad77feeaacbc150dedbfc1cde2484"
+      },
+      {
+        "chapter": 20,
+        "title": "Concurrency & Parallelism",
+        "page": 425,
+        "prose_sha256": "eb77fc9737df5e52d4c09db0d8431571cfb6968d320e64c3ef9de0c864da0461"
+      },
+      {
+        "chapter": 21,
+        "title": "Docker, K8s & CI/CD",
+        "page": 449,
+        "prose_sha256": "f2ab36f99c28d6edc4e5f4dbf9b3e55937b83db65c8883666d497111970057b0"
+      },
+      {
+        "chapter": 22,
+        "title": "Automated Testing",
+        "page": 483,
+        "prose_sha256": "960663fe464b6005f76b94c62bf3e846496678caea91eb7d9617fcc930921237"
+      },
+      {
+        "chapter": 23,
+        "title": "Message Brokers & Kafka",
+        "page": 510,
+        "prose_sha256": "eaac1e23228026f7f68f5307a3c4d922799a8214b3943f188a41a1bdc8c2a6e5"
+      },
+      {
+        "chapter": 24,
+        "title": "WebSockets & Real-Time",
+        "page": 540,
+        "prose_sha256": "b702d2cdc9cb380ba69d85315177d55410d7c8865aca45a7100ed2012a05617a"
+      },
+      {
+        "chapter": 25,
+        "title": "OpenAPI Specification & Documentation",
+        "page": 572,
+        "prose_sha256": "25b4f57b4e2bdff7067fd25264d7a144ae43a15a2b2d502250fa0907343698a2"
+      },
+      {
+        "chapter": 26,
+        "title": "AI Agents & Loop Engineering",
+        "page": 594,
+        "prose_sha256": "902c9b203d272ecf20ba697214ce0f449c668f2414618caee763fd1312852072"
+      },
+      {
+        "chapter": 27,
+        "title": "URL Shortener System Design: HLD & LLD",
+        "page": 608,
+        "prose_sha256": "3d46a48bde4b4291e9e7ad2018d8a25c1a83bb7d8b48babe17cce91df8240b80"
+      }
+    ],
+    "bookmarks": 434,
+    "links": 1693,
+    "missing_internal_targets": [],
+    "margin_overflow": [],
+    "nearly_empty_pages": [],
+    "replacement_character_pages": [],
+    "small_diagram_labels": [],
+    "inventory_totals": {
+      "diagrams": 243,
+      "tables": 126,
+      "code": 313,
+      "sections": 407
+    }
+  },
+  "python": {
+    "file": "Backend-from-First-Principles-Python-A4.pdf",
+    "pages": 619,
+    "size_bytes": 3541409,
+    "chapters": [
+      {
+        "chapter": 1,
+        "title": "HTTP & CORS",
+        "page": 5,
+        "prose_sha256": "95a8b3578b04102792690b6934874d2c1414fb8d16291698b6f5c87215072f79"
+      },
+      {
+        "chapter": 2,
+        "title": "Routing, the where of every request.",
+        "page": 50,
+        "prose_sha256": "e797ed3d5db14935f93cdcde518d8406b876756c226922d327308ae88ab877e9"
+      },
+      {
+        "chapter": 3,
+        "title": "Serialization, the shared language of machines.",
+        "page": 63,
+        "prose_sha256": "9c29af7b74faf66972a9e55519c648c21a53e8be080070b0f44c74bb3569ffe7"
+      },
+      {
+        "chapter": 4,
+        "title": "Authentication, the question of who you are.",
+        "page": 76,
+        "prose_sha256": "8c660c8555fa840bac0376b2b0ec4c75c1f8a6b484fde4de250f14ad13e23fbc"
+      },
+      {
+        "chapter": 5,
+        "title": "Validations & Transformations.",
+        "page": 103,
+        "prose_sha256": "e0ba410ca7f516442032889f3683ad3afb7c029e8d37e4fc087398d87be7df17"
+      },
+      {
+        "chapter": 6,
+        "title": "Handlers, Services & Repositories.",
+        "page": 128,
+        "prose_sha256": "a86c0d876da33486e2fc12f38955b2bac7e9fb04f427db2f5c8369b5378fad84"
+      },
+      {
+        "chapter": 7,
+        "title": "API Design (REST)",
+        "page": 140,
+        "prose_sha256": "adb315012d199fa53aea71b1c912bc54a661a84d5e3194a41bae026239e5bba4"
+      },
+      {
+        "chapter": 8,
+        "title": "Databases",
+        "page": 173,
+        "prose_sha256": "5076da3fb443d6b3a752ccb1a816f77b57e1b4af514ea7d1f644519fa5e831a4"
+      },
+      {
+        "chapter": 9,
+        "title": "Caching",
+        "page": 195,
+        "prose_sha256": "65e6aa0aa2d3989b6b7ad837e21fb9cee0a0bf6cee51a85ea3e95a87cfcffb10"
+      },
+      {
+        "chapter": 10,
+        "title": "Task Queues & Background Jobs",
+        "page": 220,
+        "prose_sha256": "087491a372e74aa0864920a3625bb91dffe5fc53e930a8370d8449c56e13d483"
+      },
+      {
+        "chapter": 11,
+        "title": "Full-Text Search & Elasticsearch",
+        "page": 249,
+        "prose_sha256": "3f3eadd681266d6359838de1d9396530dd6919fd1b1bc776d576b6a4c2f8f7f3"
+      },
+      {
+        "chapter": 12,
+        "title": "Error Handling & Fault-Tolerant Systems",
+        "page": 263,
+        "prose_sha256": "5bb01d3057965a7ff51ee1dd0f46a9f7608b1805709152935461193ff6e4c21b"
+      },
+      {
+        "chapter": 13,
+        "title": "gRPC & Inter-Service Communication",
+        "page": 279,
+        "prose_sha256": "12544bb638037299450cc865c8b99c7f42b9892a09a7993821d6e1a83583db64"
+      },
+      {
+        "chapter": 14,
+        "title": "Configuration Management",
+        "page": 300,
+        "prose_sha256": "607f1b9c4afe4092e26b467fc247f90e6a3ba4f93be8133fa145cfa46e66630f"
+      },
+      {
+        "chapter": 15,
+        "title": "Logging & Observability",
+        "page": 315,
+        "prose_sha256": "58ee59869724baf321231200474de83915a7df563ba2bc2ef451d7b9fe7c8a95"
+      },
+      {
+        "chapter": 16,
+        "title": "Graceful Shutdown",
+        "page": 336,
+        "prose_sha256": "c6534f1aa38f665d760f0491043acdea5995fd69263d322341a87996188fd02a"
+      },
+      {
+        "chapter": 17,
+        "title": "Backend Security",
+        "page": 349,
+        "prose_sha256": "cb8551ec9ca12d3b16664e34e183af4f99e7780dd54b38ffeee3a480bc3a8026"
+      },
+      {
+        "chapter": 18,
+        "title": "Mastering Scaling & Performance",
+        "page": 376,
+        "prose_sha256": "cc8fd4073a3c5b96ce554f3796b06be7249873b57a1b0ecd4985a52190350546"
+      },
+      {
+        "chapter": 19,
+        "title": "Infrastructure, Architecture & Beyond",
+        "page": 397,
+        "prose_sha256": "6739023ed9c7d8e5584536a857188f0a9c8ad77feeaacbc150dedbfc1cde2484"
+      },
+      {
+        "chapter": 20,
+        "title": "Concurrency & Parallelism",
+        "page": 414,
+        "prose_sha256": "eb77fc9737df5e52d4c09db0d8431571cfb6968d320e64c3ef9de0c864da0461"
+      },
+      {
+        "chapter": 21,
+        "title": "Docker, K8s & CI/CD",
+        "page": 438,
+        "prose_sha256": "f2ab36f99c28d6edc4e5f4dbf9b3e55937b83db65c8883666d497111970057b0"
+      },
+      {
+        "chapter": 22,
+        "title": "Automated Testing",
+        "page": 472,
+        "prose_sha256": "960663fe464b6005f76b94c62bf3e846496678caea91eb7d9617fcc930921237"
+      },
+      {
+        "chapter": 23,
+        "title": "Message Brokers & Kafka",
+        "page": 499,
+        "prose_sha256": "eaac1e23228026f7f68f5307a3c4d922799a8214b3943f188a41a1bdc8c2a6e5"
+      },
+      {
+        "chapter": 24,
+        "title": "WebSockets & Real-Time",
+        "page": 529,
+        "prose_sha256": "b702d2cdc9cb380ba69d85315177d55410d7c8865aca45a7100ed2012a05617a"
+      },
+      {
+        "chapter": 25,
+        "title": "OpenAPI Specification & Documentation",
+        "page": 561,
+        "prose_sha256": "25b4f57b4e2bdff7067fd25264d7a144ae43a15a2b2d502250fa0907343698a2"
+      },
+      {
+        "chapter": 26,
+        "title": "AI Agents & Loop Engineering",
+        "page": 583,
+        "prose_sha256": "902c9b203d272ecf20ba697214ce0f449c668f2414618caee763fd1312852072"
+      },
+      {
+        "chapter": 27,
+        "title": "URL Shortener System Design: HLD & LLD",
+        "page": 597,
+        "prose_sha256": "3d46a48bde4b4291e9e7ad2018d8a25c1a83bb7d8b48babe17cce91df8240b80"
+      }
+    ],
+    "bookmarks": 434,
+    "links": 1693,
+    "missing_internal_targets": [],
+    "margin_overflow": [],
+    "nearly_empty_pages": [],
+    "replacement_character_pages": [],
+    "small_diagram_labels": [],
+    "inventory_totals": {
+      "diagrams": 243,
+      "tables": 126,
+      "code": 313,
+      "sections": 407
+    }
+  }
+}

@@ -99,7 +99,7 @@ def prepare_chapter(c,language):
     for i,h in enumerate(a.select('h2'),1):
         if not h.get('id'): h['id']=f"{c['slug']}--section-{i}"
         headings.append((h['id'],h.get_text()))
-        label=s.new_tag('span',attrs={'class':'section-number'}); label.string=f'{i:02d}'; h.insert(0,label)
+        label=s.new_tag('span',attrs={'class':'section-number'}); label.string=f"{c['number']}.{i} "; h.insert(0,label)
     for link in a.select('a[href]'):
         href=link['href']
         if href==f"#{c['slug']}--top": link['href']='#'+c['slug']
@@ -115,6 +115,11 @@ def prepare_chapter(c,language):
         svg.replace_with(replacement)
         frame=fig.select_one('.diagram-frame')
         if frame: frame.unwrap()
+        caption=fig.select_one('figcaption')
+        if caption:
+            number=s.new_tag('span',attrs={'class':'figure-number'})
+            number.string=f"Figure {c['number']}.{i}. "
+            caption.insert(0,number)
         # Keep three short introductions with the wide artwork they introduce.
         # Without this, the change of page orientation strands them on near-empty pages.
         previous=fig.find_previous_sibling()
@@ -126,14 +131,15 @@ def prepare_chapter(c,language):
             previous['class']=previous.get('class',[])+['diagram-context']
             fig.insert(0,previous.extract())
             fig['class']=fig.get('class',[])+['has-context']
-    # Keep every remaining source code character; light syntax colour and safe wrapping.
+    # Keep every remaining source code character; use numbered, monochrome listings.
     code_texts=[]
-    for pre in list(a.select('pre')):
+    for listing_number,pre in enumerate(list(a.select('pre')),1):
         text=pre.get_text().expandtabs(4); code_texts.append(text)
         lang=pre.get('data-lang','text'); title=pre.get('data-title','')
         variant=pre.get('data-variant',''); label=LABELS.get(lang,lang)
         if variant and variant!=label: label=f'{variant} · {label}'
         if title: label+=' / '+title
+        label=f"Listing {c['number']}.{listing_number}. "+label
         try: lexer=get_lexer_by_name(lang)
         except Exception: lexer=TextLexer()
         replacement=s.new_tag('div',attrs={'class':'listing'})
@@ -144,7 +150,7 @@ def prepare_chapter(c,language):
         if any(ch in text for ch in '┌┐└┘│─'):
             block['class']+=' ascii'
             maxline=max(map(len,text.splitlines()),default=1)
-            block['style']=f'font-size:{min(7.8, 486/maxline/0.60):.2f}pt'
+            block['style']=f'font-size:{min(7.8, 460/maxline/0.60):.2f}pt'
         code=s.new_tag('code')
         # Parse inside <pre>: HTML parsers collapse whitespace-only nodes in a div.
         rendered=soup('<pre>'+highlight(text,lexer,FORMATTER)+'</pre>').pre
@@ -165,9 +171,9 @@ def prepare_chapter(c,language):
     part=next(p[2] for p in PARTS if p[0]<=c['number']<=p[1])
     outline=''.join(f'<li><a href="#{escape(i)}">{escape(t)}</a></li>' for i,t in headings)
     content=f'''<section class="chapter" id="{c['slug']}"><div class="chapter-opening">
-      <p class="part-label">{escape(part)}</p><p class="chapter-kicker">Chapter {c['number']:02d}</p>
+      <p class="chapter-kicker">Chapter {c['number']}</p>
       <h1 class="chapter-title">{escape(c['title'])}</h1><p class="chapter-summary">{escape(c['summary'])}</p>
-      <h3 class="outline-label">In this chapter</h3><ol class="chapter-outline">{outline}</ol></div>
+      <h3 class="outline-label">Chapter contents</h3><ol class="chapter-outline">{outline}</ol></div>
       <article class="prose">{inner(a)}{ref_html}</article></section>'''
     after={'diagrams':len(a.select('figure.diagram')), 'tables':len(a.select('table')), 'code':len(a.select('pre')), 'sections':len(a.select('h2'))}
     assert before['diagrams']==after['diagrams'] and before['tables']==after['tables'] and before['sections']==after['sections']
@@ -180,27 +186,26 @@ def frontmatter(chapters,language):
     for start,end,title in PARTS:
         items=[c for c in chapters if start<=c['number']<=end]
         if not items: continue
-        contents+=f'<div class="toc-part"><h3>{escape(title)}</h3><ol>'+''.join(f'<li><span class="toc-num">{c["number"]:02d}</span><a href="#{c["slug"]}">{escape(c["title"])}</a></li>' for c in items)+'</ol></div>'
-    return f'''<section class="cover"><div class="cover-top">AN ENGINEERING REFERENCE · PRINT EDITION</div>
-      <p class="cover-language">{lang} edition</p><h1>Backend<br>from First<br><em>Principles.</em></h1>
-      <p class="cover-subtitle">Understand the machinery.<br>Build with confidence.</p>
-      <div class="cover-rule"></div><p class="cover-topics">REQUESTS & APIS / DATA & STATE<br>RELIABILITY & SECURITY / DISTRIBUTED SYSTEMS</p>
-      <div class="cover-bottom"><p>27 chapters · Theory, diagrams & code</p><p>Created & curated by<br><strong>DsThakurRawat & contributors</strong></p></div></section>
-    <section class="edition-page"><p class="part-label">About this edition</p><h1>A reference for<br>your workbench.</h1>
-      <p>This print edition brings all 27 chapters of <em>Backend from First Principles</em> into one searchable, bookmarked volume, with the original explanations, diagrams and tables.</p>
+        contents+=f'<div class="toc-part"><h3>{escape(title)}</h3><ol>'+''.join(f'<li><span class="toc-num">{c["number"]}</span><a href="#{c["slug"]}">{escape(c["title"])}</a></li>' for c in items)+'</ol></div>'
+    return f'''<section class="cover"><h1>Backend from<br>First Principles</h1>
+      <p class="cover-language">{lang} edition</p>
+      <p class="cover-author">DsThakurRawat<br>and contributors</p>
+      <div class="cover-bottom"><p>November 2026<br>Personal print edition</p></div></section>
+    <section class="edition-page"><h1>About this edition</h1>
+      <p>This edition contains the 27 chapters of <em>Backend from First Principles</em>, by DsThakurRawat and repository contributors.</p>
       <h3>Reading the {lang} edition</h3><p>Where the website offers equivalent language tabs, this edition selects <strong>{lang}</strong>. Shared SQL, protocol messages, commands and configuration remain. Examples that explain a specific runtime, or have no equivalent in the source, keep their original language and are labelled accordingly. The teaching text is in English.</p>
-      <p>Section numbers restart in each chapter. The main contents and chapter outlines show printed page numbers. Links remain clickable; external reading links are also listed as full URLs at the end of each chapter.</p>
-      <h3>Designed for paper</h3><p>A4 · mirrored binding margins · colour diagrams · white paper. Reading pages are portrait; dense, wide diagrams have landscape pages. Print at <strong>100% / Actual size</strong>, with automatic page orientation. For two-sided printing choose <strong>flip on the long edge</strong>. Chapters begin on the next available page.</p>
+      <p>Sections, figures and code listings are numbered by chapter. Contents entries give printed page numbers. External reading links are listed at the end of each chapter.</p>
+      <h3>Printing</h3><p>The pages are A4, with mirrored margins for binding. Text and listings use black ink; the original diagrams retain their colours. Wide diagrams occupy landscape pages. Print at <strong>100% / Actual size</strong>, with automatic orientation and long-edge binding for two-sided printing.</p>
       <h3>Source & attribution</h3><p>Original content: <strong>DsThakurRawat & repository contributors</strong>.<br>Source website:<br><a href="https://backend-from-first-principle.vercel.app/">https://backend-from-first-principle.vercel.app/</a></p>
       <p>Repository:<br><a href="https://github.com/DsThakurRawat/Backend-from-first-Principle">https://github.com/DsThakurRawat/Backend-from-first-Principle</a></p>
       <p class="small">Prepared 6 November 2026 from repository snapshot<br><span class="commit">{COMMIT}</span>.<br>This is a personal print adaptation. Technical content and authorship remain with the original project; the layout and language-tab selection were adapted for this edition.</p></section>
-    <nav class="contents"><p class="part-label">The complete reference</p><h1>Contents</h1>{contents}</nav>'''
+    <nav class="contents"><h1>Contents</h1>{contents}</nav>'''
 
 def build(chapters,language,render):
     pieces=[]; report=[]
     for c in chapters:
         html,stats=prepare_chapter(c,language); pieces.append(html); report.append(stats)
-    css=(ROOT/'tools/print.css').read_text()+'\n'+FORMATTER.get_style_defs('.source-code')+'\n.source-code :is(.c,.c1,.cm,.cp,.cs,.ch,.cpf) { color:#506773; } .source-code :is(.m,.mi,.mf,.mh,.mo,.mb,.il) { color:#754272; } .source-code .err { border:0; color:#7d2929; background:none; }'
+    css=(ROOT/'tools/print.css').read_text()
     html='<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Backend from First Principles — '+LANGS[language]+' edition</title><meta name="author" content="DsThakurRawat and contributors"><meta name="description" content="A complete A4 print adaptation of the 27-chapter engineering reference."><style>'+css+'</style></head><body>'+frontmatter(chapters,language)+''.join(pieces)+'</body></html>'
     path=BUILD/f'book-{language}.html'; path.write_text(html)
     (BUILD/f'inventory-{language}.json').write_text(json.dumps(report,indent=2))
